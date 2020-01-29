@@ -15,9 +15,9 @@ public class Application {
     public static void startServer(){
         Spark.port(8080);
 
-        Spark.post("/transfer", new TransferController.Transfer());
-        Spark.post("/account", new AccountController.CreateAccount());
-        Spark.get("/account/:accountId", new AccountController.GetAccount());
+        Spark.post("/v1/transfer", new TransferController.Transfer());
+        Spark.post("/v1/account", new AccountController.CreateAccount());
+        Spark.get("/v1/account/:accountId", new AccountController.GetAccount());
 
         Spark.exception(Exception.class, (exception, request, response) -> {
             response.status(400);

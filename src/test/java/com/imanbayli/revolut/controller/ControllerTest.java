@@ -31,7 +31,7 @@ public class ControllerTest {
     public void test_whenRequestBodyIsEmptyStatusShouldBeBadRequest_fail() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(new AccountRequest())))
-                .uri(URI.create("http://localhost:8080/account"))
+                .uri(URI.create("http://localhost:8080/v1/account"))
                 .header("Content-Type", "application/json")
                 .build();
 
@@ -47,7 +47,7 @@ public class ControllerTest {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(account)))
-                .uri(URI.create("http://localhost:8080/account"))
+                .uri(URI.create("http://localhost:8080/v1/account"))
                 .header("Content-Type", "application/json")
                 .build();
 
@@ -59,7 +59,7 @@ public class ControllerTest {
     public void test_whenAccountIdIsNotExistThenStatusShouldBeBadRequest_fail() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create("http://localhost:8080/account/14578994"))
+                .uri(URI.create("http://localhost:8080/v1/account/14578994"))
                 .header("Content-Type", "application/json")
                 .build();
 
@@ -75,7 +75,7 @@ public class ControllerTest {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(account)))
-                .uri(URI.create("http://localhost:8080/account"))
+                .uri(URI.create("http://localhost:8080/v1/account"))
                 .header("Content-Type", "application/json")
                 .build();
 
@@ -83,7 +83,7 @@ public class ControllerTest {
 
         request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create("http://localhost:8080/account/"+account.getAccountId()))
+                .uri(URI.create("http://localhost:8080/v1/account/"+account.getAccountId()))
                 .header("Content-Type", "application/json")
                 .build();
 
@@ -95,7 +95,7 @@ public class ControllerTest {
     public void test_whenRequestBodyIsEmptyThenTransferStatusShouldBeBadRequest_fail() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(new TransferRequest())))
-                .uri(URI.create("http://localhost:8080/transfer"))
+                .uri(URI.create("http://localhost:8080/v1/transfer"))
                 .header("Content-Type", "application/json")
                 .build();
 
@@ -112,7 +112,7 @@ public class ControllerTest {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(transferRequest)))
-                .uri(URI.create("http://localhost:8080/transfer"))
+                .uri(URI.create("http://localhost:8080/v1/transfer"))
                 .header("Content-Type", "application/json")
                 .build();
 
@@ -128,7 +128,7 @@ public class ControllerTest {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(account)))
-                .uri(URI.create("http://localhost:8080/account"))
+                .uri(URI.create("http://localhost:8080/v1/account"))
                 .header("Content-Type", "application/json")
                 .build();
         HttpResponse<String> response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
@@ -140,7 +140,7 @@ public class ControllerTest {
 
         request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(account2)))
-                .uri(URI.create("http://localhost:8080/account"))
+                .uri(URI.create("http://localhost:8080/v1/account"))
                 .header("Content-Type", "application/json")
                 .build();
         response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
@@ -153,7 +153,7 @@ public class ControllerTest {
 
         request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(transferRequest)))
-                .uri(URI.create("http://localhost:8080/transfer"))
+                .uri(URI.create("http://localhost:8080/v1/transfer"))
                 .header("Content-Type", "application/json")
                 .build();
 
